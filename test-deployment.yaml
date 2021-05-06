@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-deploy
+  labels:
+    name: test-app-deploy
+    app: demo-test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: test-app-pod
+      app: demo-test-app
+    
+  template:
+    metadata:
+      name: test-app-pod
+      labels:
+        name: test-app-pod
+        app: demo-test-app
+    spec:
+      containers:
+        - name: test-app
+          image: 23arpitshah/dockerdemowebapp
+          ports:
+            - containerPort: 80
+    
